@@ -2,16 +2,12 @@ name: Action
 
 on:
   schedule:
-    - cron: 10 16 * * *
+    - cron: 05 16 * * *
   workflow_dispatch:
 
 jobs:
   build:
-    strategy:
-      matrix:
-        group: [group_1]
     runs-on: ubuntu-latest
-    environment: ${{ matrix.group }}
 
     steps:
       - name: 更改交换空间并link构建空间
@@ -27,7 +23,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: .token
-          key: ${{ matrix.group }}-by_zhlhlf
+          key: sign-by_zhlhlf
 
       - name: 安装node.js环境
         uses: actions/setup-node@main
